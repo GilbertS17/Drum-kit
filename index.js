@@ -1,15 +1,14 @@
-for (let i = 0; i < document.querySelectorAll(".drum").length; i++) {
-  document.querySelectorAll(".drum")[i].addEventListener("click", function() {
-    let buttonInnerHTML = this.innerHTML
-    makeSound(buttonInnerHTML)
-    makeAnimation(buttonInnerHTML)
-  })
-}
-
-const eventKey = document.addEventListener("keypress", function(event) {
+$(".drum").click(function() {
+  let buttonInnerHTML = this.innerHTML
+  makeSound(buttonInnerHTML)
+  makeAnimation(buttonInnerHTML)
+})
+  
+$(document).keypress(function(event) {
   makeSound(event.key)
   makeAnimation(event.key)
 })
+
 
 function makeSound(key) {
   switch (key) {
@@ -56,6 +55,7 @@ function makeSound(key) {
 function makeAnimation(currentKey) {
   let activeButton = document.querySelector("." + currentKey)
   activeButton.classList.toggle("pressed")
+  
   setTimeout(function() {
     activeButton.classList.toggle("pressed")
   },100)
